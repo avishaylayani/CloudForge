@@ -1,0 +1,34 @@
+name: deploy application
+
+on: 
+  push:
+    branches:
+      - details_app_dev
+env:
+  DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
+jobs:
+  docker-build:
+    name: Build&Push development image
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Testing
+        run: echo ${{ vars.DOCKER_USERNAME }}
+      - name: testing2
+        run: echo ${{ vars.DOCKER_PASSWORD }}
+      - name: testing3
+        run: echo ${{ vars.details_app_dev }}
+      # - name: login to docker hub
+      #   uses: docker/login-action@v2
+      #   with:
+      #     username: ${{ vars.DOCKER_USERNAME }}
+      #     password: ${{ vars.DOCKER_PASSWORD }}
+      
+      # - name: Building the image
+      #   run: docker build -t "details_app:test" .
+      
+      # - name: Tagging the image
+      #   run: docker tag details_app:test ${{ vars.DOCKER_USERNAME }} /details_app:test
+
+      # - name: Pushing the image
+      #   run: docker push alayani/details_app:test    
